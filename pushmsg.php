@@ -1,6 +1,7 @@
 
 <?php
 
+/*
 $fh = fopen('groupid.txt','r');
 while ($line = fgets($fh)) {
   // <... Do your work with the line ...>
@@ -13,6 +14,8 @@ while ($line = fgets($fh)) {
 }
 fclose($fh);
 echo "ID=>".$gruop_id;
+*/
+
 $access_token = 'oPkXa0tKzfxfMCjx6gm5iirMYaHeXia/Fsy1R9Lt8lRybMocm/seOqBvbIaHYkqtprR4DgHJcmsI6XNoatxGLYidiWJQEO0acDULgyJSHB2EOHNRAFXHxOuC0tP7KwiibUSgyuz6kB+MKKZf17qjYgdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -43,13 +46,13 @@ if (!is_null($events['events'])) {
    $replyToken = $event['replyToken'];
 
 	
-$id1 = 'userId=>'.$event['source']['userId'];
-$id2 = 'groupId=>'.$event['source']['groupId'];
-$id3 = 'roomId=>'.$event['source']['room'];
+//$id1 = 'userId=>'.$event['source']['userId'];
+//$id2 = 'groupId=>'.$event['source']['groupId'];
+//$id3 = 'roomId=>'.$event['source']['room'];
 
-   $text = 'Reply Token=>'.$replyToken.'|'.$id1.'|'.$id2.'|'.$id3.'|'.'Yepppppppp=>'.$event['message']['text'];	
+   //$text = 'Reply Token=>'.$replyToken.'|'.$id1.'|'.$id2.'|'.$id3.'|'.'Yepppppppp=>'.$event['message']['text'];	
 	
-	//$text = 'Yepppppppp';
+   $text = 'Yepppppppp';
    
 
    // Build message to reply back
