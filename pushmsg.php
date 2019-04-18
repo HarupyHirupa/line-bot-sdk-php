@@ -6,15 +6,16 @@ $fh = fopen('groupid.txt','r');
 while ($line = fgets($fh)) {
   // <... Do your work with the line ...>
   // echo($line);
-  	if (strpos($line, 'group_1=') >= 0 && strpos($line, 'group_1=') < strlen($line))
+  	/*
+	if (strpos($line, 'group_1=') >= 0 && strpos($line, 'group_1=') < strlen($line))
 	{
 		//$gruop_id = substr($line, strpos($line, 'group_1=')+1, strlen($line)-trpos($line, 'group_1='));
 	}
-    		
+    	*/	
 }
 fclose($fh);
 //echo "ID=>".$gruop_id;
-
+echo "ID=>".$line;
 
 $access_token = 'oPkXa0tKzfxfMCjx6gm5iirMYaHeXia/Fsy1R9Lt8lRybMocm/seOqBvbIaHYkqtprR4DgHJcmsI6XNoatxGLYidiWJQEO0acDULgyJSHB2EOHNRAFXHxOuC0tP7KwiibUSgyuz6kB+MKKZf17qjYgdB04t89/1O/w1cDnyilFU=';
 
