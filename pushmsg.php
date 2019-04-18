@@ -83,8 +83,8 @@ if (!is_null($events['events'])) {
   }
  }
 }
-//echo "OK";
-echo 'ID=>'.$gruop_id;
+echo "OK";
+//echo "ID=>".$gruop_id;
 //echo $gruop_id;
 
 
