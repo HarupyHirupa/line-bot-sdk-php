@@ -26,9 +26,9 @@ if (!is_null($events['events'])) {
    }
    */
 	
-$id1 = 'userId'.$arrayJson['events'][0]['source']['userId'];
-$id2 = 'groupId'.$arrayJson['events'][0]['source']['groupId'];
-$id3 = 'roomId'.$arrayJson['events'][0]['source']['room'];
+$id1 = 'userId'.$event['message']['source']['userId'];
+$id2 = 'groupId'.$event['message']['source']['groupId'];
+$id3 = 'roomId'.$event['message']['source']['room'];
 
    $text = $id1.'|'.$id2.'|'.$id3.'|'.'Yepppppppp=>'.$event['message']['text'];	
 	
