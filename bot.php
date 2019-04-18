@@ -30,9 +30,9 @@ if (!is_null($events['events'])) {
    $replyToken = $event['replyToken'];
 
 	
-$id1 = 'userId=>'.$event['source']['userId'];
-$id2 = 'groupId=>'.$event['source']['groupId'];
-$id3 = 'roomId=>'.$event['source']['room'];
+//$id1 = 'userId=>'.$event['source']['userId'];
+//$id2 = 'groupId=>'.$event['source']['groupId'];
+//$id3 = 'roomId=>'.$event['source']['room'];
 
    //$text = 'Reply Token=>'.$replyToken.'|'.$id1.'|'.$id2.'|'.$id3.'|'.'Yepppppppp=>'.$event['message']['text'];	
 	
