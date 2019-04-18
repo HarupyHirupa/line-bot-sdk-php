@@ -16,16 +16,16 @@ if (!is_null($events['events'])) {
    
 
    if(isset($arrayJson['events'][0]['source']['userId']){
-      $id = "userId".$arrayJson['events'][0]['source']['userId'];
+      $id = 'userId'.$arrayJson['events'][0]['source']['userId'];
    }
    else if(isset($arrayJson['events'][0]['source']['groupId'])){
-      $id = "groupId".$arrayJson['events'][0]['source']['groupId'];
+      $id = 'groupId'.$arrayJson['events'][0]['source']['groupId'];
    }
    else if(isset($arrayJson['events'][0]['source']['room'])){
-      $id = "room".$arrayJson['events'][0]['source']['room'];
+      $id = 'room'.$arrayJson['events'][0]['source']['room'];
    }
    
-   $text = $id."=>".$event['message']['text'];	
+   $text = $id.'=>'.$event['message']['text'];	
 	
 	//$text = 'Yepppppppp';
    // Get replyToken
