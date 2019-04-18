@@ -14,7 +14,7 @@ if (!is_null($events['events'])) {
   if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
    // Get text sent
    
-
+/*	
    if(isset($arrayJson['events'][0]['source']['userId']){
       $id = 'userId'.$arrayJson['events'][0]['source']['userId'];
    }
@@ -24,8 +24,8 @@ if (!is_null($events['events'])) {
    else if(isset($arrayJson['events'][0]['source']['room'])){
       $id = 'room'.$arrayJson['events'][0]['source']['room'];
    }
-   
-   $text = $id.'=>'.$event['message']['text'];	
+   */
+   $text = 'Yepppppppp'.$event['message']['text'];	
 	
 	//$text = 'Yepppppppp';
    // Get replyToken
