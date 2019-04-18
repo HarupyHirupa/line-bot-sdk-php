@@ -8,7 +8,7 @@ while ($line = fgets($fh)) {
   // echo($line);
   	if (strpos($line, 'group_1=') >= 0 && strpos($line, 'group_1=') < strlen($line))
 	{
-		$gruop_id = substr($line, strpos($line, 'group_1=')+1, strlen($line)-trpos($line, 'group_1='));
+		//$gruop_id = substr($line, strpos($line, 'group_1=')+1, strlen($line)-trpos($line, 'group_1='));
 	}
     		
 }
