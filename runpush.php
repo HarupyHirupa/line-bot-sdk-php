@@ -4,4 +4,5 @@
       $scriptName = 'pushmsg.sh';
       $moveCommand = "mv $webRootFolder/$scriptName $tempFolder/$scriptName";
       $output = shell_exec($moveCommand);
+	echo 'OK';
 ?>
