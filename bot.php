@@ -25,10 +25,12 @@ if (!is_null($events['events'])) {
       $id = 'room'.$arrayJson['events'][0]['source']['room'];
    }
    */
-	$id = 'userId'.$event['message'][0]['source']['userId'];
+	
+$id1 = 'userId'.$arrayJson['events'][0]['source']['userId'];
+$id2 = 'groupId'.$arrayJson['events'][0]['source']['groupId'];
+$id3 = 'roomId'.$arrayJson['events'][0]['source']['room'];
 
-
-   $text = $id.'Yepppppppp=>'.$event['message']['text'];	
+   $text = $id1.'|'.$id2.'|'.$id3.'|'.'Yepppppppp=>'.$event['message']['text'];	
 	
 	//$text = 'Yepppppppp';
    // Get replyToken
