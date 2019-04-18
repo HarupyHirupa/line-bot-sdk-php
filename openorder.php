@@ -7,6 +7,7 @@ function writeFile($data){
   fwrite($logfile, "\r\n". $data);
   fclose($logfile);
 }
+//https://aps-superbot.herokuapp.com/openorder.php?task=upd_new_order&symbol=XAUUSD&op_price=1.123&tp_price=3.256&sl_price=5.678
 
    $task = $_REQUEST['task'];
    //echo "Task = $task \r\n";
@@ -29,5 +30,5 @@ function writeFile($data){
 	writeFile($saveData);
    }
 
-
+echo 'OK';	
 	
