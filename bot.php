@@ -13,7 +13,20 @@ if (!is_null($events['events'])) {
   // Reply only when message sent is in 'text' format
   if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
    // Get text sent
-   $text = $event['message']['text'];
+   
+
+   if(isset($arrayJson['events'][0]['source']['userId']){
+      $id = "userId".$arrayJson['events'][0]['source']['userId'];
+   }
+   else if(isset($arrayJson['events'][0]['source']['groupId'])){
+      $id = "groupId".$arrayJson['events'][0]['source']['groupId'];
+   }
+   else if(isset($arrayJson['events'][0]['source']['room'])){
+      $id = "room".$arrayJson['events'][0]['source']['room'];
+   }
+   
+   $text = $id."=>".$event['message']['text'];	
+	
 	//$text = 'Yepppppppp';
    // Get replyToken
    $replyToken = $event['replyToken'];
