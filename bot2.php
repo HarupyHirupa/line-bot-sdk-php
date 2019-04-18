@@ -16,7 +16,7 @@ require_once 'bot_settings.php';
 ///////////// ส่วนของการเรียกใช้งาน class ผ่าน namespace
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient;
-use LINE\LINEBot\HTTPClient\CurlHTTPClient;
+//use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 //use LINE\LINEBot\Event;
 //use LINE\LINEBot\Event\BaseEvent;
 //use LINE\LINEBot\Event\MessageEvent;
