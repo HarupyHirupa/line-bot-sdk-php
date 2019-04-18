@@ -11,9 +11,10 @@
    curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
    curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 
-   $replyData = json_decode(curl_exec($curlSession));
+   //$replyData = json_decode(curl_exec($curlSession));
+   $replyData = curl_exec($curlSession);
    curl_close($curlSession);	
-   echo $jsonData;
+   echo $replyData;
 
 	
    //$replyData = "Reply Test\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452";
