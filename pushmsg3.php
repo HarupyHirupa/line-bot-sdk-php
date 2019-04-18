@@ -1,10 +1,20 @@
 <?php
- 
+ /*
    $url = "http://tangmee.com/feedmepro/get_new_order.php?task=get_new_order";
    $parts = parse_url($url);
    $output = [];
    parse_str($parts['query'], $output);
    echo $output['get_new_order'];
+*/
+   $curlSession = curl_init();
+   curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order.php?task=get_new_order');
+   curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+   curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+
+   $jsonData = json_decode(curl_exec($curlSession));
+   curl_close($curlSession);	
+   echo $jsonData;
+
 	
    $replyData = "Reply Test\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452";
    $accessToken = "oPkXa0tKzfxfMCjx6gm5iirMYaHeXia/Fsy1R9Lt8lRybMocm/seOqBvbIaHYkqtprR4DgHJcmsI6XNoatxGLYidiWJQEO0acDULgyJSHB2EOHNRAFXHxOuC0tP7KwiibUSgyuz6kB+MKKZf17qjYgdB04t89/1O/w1cDnyilFU=";//copy ข้อความ Channel access token ตอนที่ตั้งค่า
