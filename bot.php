@@ -34,9 +34,9 @@ $id1 = 'userId=>'.$event['source']['userId'];
 $id2 = 'groupId=>'.$event['source']['groupId'];
 $id3 = 'roomId=>'.$event['source']['room'];
 
-   $text = 'Reply Token=>'.$replyToken.'|'.$id1.'|'.$id2.'|'.$id3.'|'.'Yepppppppp=>'.$event['message']['text'];	
+   //$text = 'Reply Token=>'.$replyToken.'|'.$id1.'|'.$id2.'|'.$id3.'|'.'Yepppppppp=>'.$event['message']['text'];	
 	
-	//$text = 'Yepppppppp';
+	$text = 'ความมั่งคั่งจะมาสู่คุณในไม่ช้า (happy)';
    
 
    // Build message to reply back
