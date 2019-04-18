@@ -36,8 +36,8 @@ if (!is_null($events['events'])) {
 
    //$text = 'Reply Token=>'.$replyToken.'|'.$id1.'|'.$id2.'|'.$id3.'|'.'Yepppppppp=>'.$event['message']['text'];	
 	
-	//$text = 'ความมั่งคั่งจะมาสู่คุณในไม่ช้า (happy)';
-   	$text = 'Yepppppppp=>'.$event['message']['text'];
+	$text = 'ความมั่งคั่งจะมาสู่คุณในไม่ช้า' (happy);
+   	//$text = 'Yepppppppp=>'.$event['message']['text'];
 
    // Build message to reply back
    $messages = [
