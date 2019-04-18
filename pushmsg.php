@@ -1,24 +1,27 @@
 
 <?php
 
-
+/*
 $fh = fopen('groupid.txt','r');
 while ($line = fgets($fh)) {
   // <... Do your work with the line ...>
   // echo($line);
-  	/*
+  	
 	if (strpos($line, 'group_1=') >= 0 && strpos($line, 'group_1=') < strlen($line))
 	{
 		//$gruop_id = substr($line, strpos($line, 'group_1=')+1, strlen($line)-trpos($line, 'group_1='));
 	}
-    	*/	
+    		
 }
 fclose($fh);
 //echo "ID=>".$gruop_id;
 echo "ID=>".$line;
+*/
 
+$group_id = 'C042ba72bd2b8ccdfccf9426a107cdfca';
 $access_token = 'oPkXa0tKzfxfMCjx6gm5iirMYaHeXia/Fsy1R9Lt8lRybMocm/seOqBvbIaHYkqtprR4DgHJcmsI6XNoatxGLYidiWJQEO0acDULgyJSHB2EOHNRAFXHxOuC0tP7KwiibUSgyuz6kB+MKKZf17qjYgdB04t89/1O/w1cDnyilFU=';
 
+/*
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -30,7 +33,7 @@ if (!is_null($events['events'])) {
   // Reply only when message sent is in 'text' format
   if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
    // Get text sent
-   
+*/   
 /*	
    if(isset($arrayJson['events'][0]['source']['userId']){
       $id = 'userId'.$arrayJson['events'][0]['source']['userId'];
@@ -44,7 +47,7 @@ if (!is_null($events['events'])) {
    */
 
 // Get replyToken
-   $replyToken = $event['replyToken'];
+//   $replyToken = $event['replyToken'];
 
 	
 //$id1 = 'userId=>'.$event['source']['userId'];
@@ -53,7 +56,7 @@ if (!is_null($events['events'])) {
 
    //$text = 'Reply Token=>'.$replyToken.'|'.$id1.'|'.$id2.'|'.$id3.'|'.'Yepppppppp=>'.$event['message']['text'];	
 	
-   $text = 'Yepppppppp';
+   $text = 'TEST\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452';
    
 
    // Build message to reply back
@@ -63,9 +66,9 @@ if (!is_null($events['events'])) {
    ];
 
    // Make a POST Request to Messaging API to reply to sender
-   $url = 'https://api.line.me/v2/bot/message/reply';
+   $url = 'https://api.line.me/v2/bot/message/push';
    $data = [
-    'replyToken' => $replyToken,
+    'to' => $group_id,
     'messages' => [$messages],
    ];
    $post = json_encode($data);
