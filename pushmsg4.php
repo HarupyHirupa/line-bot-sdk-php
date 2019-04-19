@@ -9,7 +9,7 @@
 
    $replyData = curl_exec($curlSession);
    curl_close($curlSession);	
-   //echo $replyData;
+   echo $replyData;
 	
    if(strpos($replyData, "Open Order") == false) {$replyData = "No new order.!!";}		
    //$replyData = "Reply Test\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452";
