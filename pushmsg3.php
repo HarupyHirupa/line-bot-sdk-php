@@ -25,9 +25,7 @@
    if($message == "request"){
       for ($i=0; $i <= 30; $i++) {
          $replyData = callUrlData();
-         if(strpos($replyData, "Open Order") == false) {
-             break;
-         }
+         if(strpos($replyData, "Open Order") == true) {
     	 sleep(5); // this should halt for 3 seconds for every loop
 
          $arrayPostData['to'] = $id;
@@ -37,6 +35,8 @@
          $arrayPostData['messages'][1]['packageId'] = "2";
          $arrayPostData['messages'][1]['stickerId'] = "34";
          pushMsg($arrayHeader,$arrayPostData);
+	 }
+	 if(i == 28) {i=0;}
       }
    }
    function pushMsg($arrayHeader,$arrayPostData){
