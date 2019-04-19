@@ -56,7 +56,7 @@ else
    if ($task === "upd_new_order")
    {
 	$st_time = GETDATE();
-	$tsql_i = $preSQL." ([SYMBOL], [OP_PRICE], [TP_PRICE], [SL_PRICE], [OP_TYPE], [TICKET], [TIME_STAMP]) VALUES (?,?,?,?,?,?,?);";
+	$tsql_i = $preSQL." ([SYMBOL], [OP_PRICE], [TP_PRICE], [SL_PRICE], [OP_TYPE], [TICKET], [TIME_STAMPT]) VALUES (?,?,?,?,?,?,?);";
 	$params_i = array(&$symbol,&$op_price,&$tp_price,&$sl_price,&$op_type,&$ticket_id,&$st_time);
 	// Prepare and execute the statement. 
 	if ($updateReview  = sqlsrv_prepare($objConnect , $tsql_i, $params_i))
