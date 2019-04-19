@@ -63,7 +63,6 @@ if ($task === "get_new_order")
 		//DisplayNoDataMsg();
 	}
 	
-	
 	$tsql_i = "UPDATE [FLIGHT_INFO].[dbo].[TB_OP_ORDER] SET [NOTIFY] = GETDATE() WHERE ([REC_ID] = $rec_id)";	
 	$params_i = array("");
 	//echo $tsql_i;
