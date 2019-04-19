@@ -23,13 +23,21 @@
    $id = $arrayJson['events'][0]['source']['groupId'];
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "request"){
-      $arrayPostData['to'] = $id;
-      $arrayPostData['messages'][0]['type'] = "text";
-      $arrayPostData['messages'][0]['text'] = $replyData ;
-      $arrayPostData['messages'][1]['type'] = "sticker";
-      $arrayPostData['messages'][1]['packageId'] = "2";
-      $arrayPostData['messages'][1]['stickerId'] = "34";
-      pushMsg($arrayHeader,$arrayPostData);
+      for ($i=0; $i <= 30; $i++) {
+         $replyData = callUrlData();
+         if(strpos($replyData, "Open Order") == false) {
+             break;
+         }
+    	 sleep(5); // this should halt for 3 seconds for every loop
+
+         $arrayPostData['to'] = $id;
+         $arrayPostData['messages'][0]['type'] = "text";
+         $arrayPostData['messages'][0]['text'] = $replyData ;
+         $arrayPostData['messages'][1]['type'] = "sticker";
+         $arrayPostData['messages'][1]['packageId'] = "2";
+         $arrayPostData['messages'][1]['stickerId'] = "34";
+         pushMsg($arrayHeader,$arrayPostData);
+      }
    }
    function pushMsg($arrayHeader,$arrayPostData){
       $strUrl = "https://api.line.me/v2/bot/message/push";
@@ -44,8 +52,17 @@
       $result = curl_exec($ch);
       curl_close ($ch);
    }
+	
+   function callUrlData(){
+     $curlSession = curl_init();
+     curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order.php?task=get_new_order');
+     curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+     curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 
-
+     $retData = curl_exec($curlSession);
+     curl_close($curlSession);
+     return $retData;
+   }	
    exit;
 ?>
 
