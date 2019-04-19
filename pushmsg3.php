@@ -23,6 +23,13 @@
    $id = $arrayJson['events'][0]['source']['groupId'];
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "request"){
+	$arrayPostData['to'] = $id;
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $replyData ;
+        $arrayPostData['messages'][1]['type'] = "sticker";
+        $arrayPostData['messages'][1]['packageId'] = "2";
+        $arrayPostData['messages'][1]['stickerId'] = "34";
+        pushMsg($arrayHeader,$arrayPostData);
       for ($i=0; $i <= 30; $i++) {
          $replyData = callUrlData();
          if(strpos($replyData, "Open Order") == false) {
