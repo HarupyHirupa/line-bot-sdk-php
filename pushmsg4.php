@@ -1,11 +1,11 @@
 <?php
 
-   function setInterval($callUrlData, $milliseconds)
+   function setInterval($f, $milliseconds)
    {
     	$seconds=(int)$milliseconds/1000;
     	while(true)
     	{
-        	$callUrlData();
+        	$f();
         	sleep($seconds);
     	}
    }
@@ -25,7 +25,7 @@
    echo $replyData;
 	
    setInterval(function(){
-    	echo "hi!\n";
+    	callUrlData();
 	},
    
    function pushMsg($arrayHeader,$arrayPostData){
