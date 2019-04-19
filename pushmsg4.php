@@ -1,18 +1,15 @@
 <?php
 
-   function setInterval($f, $milliseconds)
-   {
-    	$seconds=(int)$milliseconds/1000;
-    	while(true)
-    	{
-        	$f();
-        	sleep($seconds);
-    	}
-   }
+   set_time_limit(0);
 
-   setInterval(function(){
-    	echo "hi!\n";
-	},
+   $interval=1; //minutes
+   echo str_repeat(" ", 1024);
+   while(true) {
+       $now=time();
+       echo $now."<BR>";
+       sleep($interval * 60);
+       flush();
+   }
 /*   
    $curlSession = curl_init();
    curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order_test.php?task=get_new_order');
