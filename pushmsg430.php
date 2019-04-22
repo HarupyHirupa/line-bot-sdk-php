@@ -73,6 +73,7 @@
      return $retData;
    }
 
+/*
    function saveGroupID($gid){
      if($gid !== "")
 	{
@@ -84,7 +85,8 @@
      		$retData = curl_exec($curlSession);
      		curl_close($curlSession);
  	}
-   }		
+   }
+*/		
    exit;
 ?>
 
