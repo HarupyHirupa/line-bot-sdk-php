@@ -21,7 +21,8 @@
    $message = $arrayJson['events'][0]['message']['text'];
    //รับ id ของผู้ใช้
    $id = $arrayJson['events'][0]['source']['groupId'];
-   saveGroupID($id);
+  //echo $id; 
+  //saveGroupID($id);
    #ตัวอย่าง Message Type "Text + Sticker"
    if($message == "request"){
 	$arrayPostData['to'] = $id;
