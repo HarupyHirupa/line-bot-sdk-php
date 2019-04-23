@@ -48,6 +48,12 @@
          pushMsg($arrayHeader,$arrayPostData);
       }
    }
+   else if($message == "saveid"){
+	saveGroupID($id);
+   }
+
+
+	
    function pushMsg($arrayHeader,$arrayPostData){
       $strUrl = "https://api.line.me/v2/bot/message/push";
       $ch = curl_init();
