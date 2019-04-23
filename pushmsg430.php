@@ -2,13 +2,16 @@
 
    $bot_name = "430 Signal"; 	
    $curlSession = curl_init();
-   curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order.php?task=get_new_order');
+   curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order_430.php?task=get_new_order');
    curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
    curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 
-   $replyData = curl_exec($curlSession);
+   $retData = curl_exec($curlSession);
    curl_close($curlSession);	
-   //echo $replyData;
+   $pos = stripos($retData, '#', 0);
+   $replyData = substr($retData, 0, $pos);
+   $groupID = substr($retData, $pos+1, strlen($retData)-$pos+1);
+
 	
    if(strpos($replyData, "Open Order") == false) {$replyData = "No new order.!!";}		
    //$replyData = "Reply Test\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452";
@@ -23,8 +26,7 @@
 
    $id = $arrayJson['events'][0]['source']['groupId'];
   //echo $id; 
-  //saveGroupID($id);
-
+  
    if($message == "request"){
 	$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
