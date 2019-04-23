@@ -3,6 +3,7 @@
    $bot_name = "430 Signal";
 for($i=1;$i<=3;$i++)
 {
+   
    $curlSession = curl_init();
    curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_group_id.php?task=get_g_id&bot_name='.$bot_name.'&rec_id='.$i);
    curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
@@ -10,10 +11,10 @@ for($i=1;$i<=3;$i++)
 
    $groupID = curl_exec($curlSession);
    curl_close($curlSession);
-
+   
   
    $curlSession = curl_init();
-   curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order.php?task=get_new_order');
+   curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order_430.php?task=get_new_order&g_id='.$groupID);
    curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
    curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 
