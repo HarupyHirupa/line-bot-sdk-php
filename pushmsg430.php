@@ -59,7 +59,7 @@
 	pushMsg($arrayHeader,$arrayPostData);
 
 	$gr_url = 'http://tangmee.com/feedmepro/save_new_group.php?task=save_new_group&g_id='.$id.'&bot_name='.$bot_name;
-	$use_url = urlencode($gr_url);
+	$use_url = preg_replace('/ /', '%20', $gr_url);
 	/*
 	$curlSession = curl_init();
      	curl_setopt($curlSession, CURLOPT_URL, $gr_url);
