@@ -17,9 +17,13 @@
 
    $op_type = $_REQUEST['op_type'];
    //echo "op_type = $op_type \r\n";	
-
+/*
    $seq_id = $_REQUEST['seq_id'];
    //echo "seq_id = $seq_id \r\n";
+*/
+   $g_id = $_REQUEST['g_id'];
+   //echo "g_id = $g_id \r\n";
+
 
    $replyData = "";
    if($task == "direct_push")
@@ -39,11 +43,13 @@
    	//$replyData = "Reply Test\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452";
    	$accessToken = "W9XPAiTihrq4YYec21gDIEpts/88RGZc18uiz81uCykGu4kwSazkEgBvs8e0RuA/nUi0K2mcINn5ubtzOCnLFBc2NlE9DRLn+JE+az+MHtr8rW11X2vbn7PbEntBCv3GFuaAk3/Ordvix/E9pwJT2wdB04t89/1O/w1cDnyilFU=";
    	//$groupID = "C41a4796d0c1af51d998d88d32eae52ba";
+ 	$groupID = $g_id;
    	echo $replyData;
  	
 	//$bot_name = "430 Signal";
    	//for($i=1;$i<=3;$i++)
 	{
+		/*
 		$curlSession = curl_init();
    		curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_group_id.php?task=get_g_id&bot_name='.$bot_name.'&rec_id='.$seq_id);
    		curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
@@ -52,6 +58,7 @@
    		$groupID = curl_exec($curlSession);
    		curl_close($curlSession);
 		//echo 'Group=>'.$groupID;
+		*/
 
    		//$content = file_get_contents('php://input');
    		//$arrayJson = json_decode($content, true);
