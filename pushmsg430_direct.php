@@ -47,7 +47,8 @@
 
    		$groupID = curl_exec($curlSession);
    		curl_close($curlSession);
-		
+		echo 'Group=>'.$groupID;
+
    		//$content = file_get_contents('php://input');
    		//$arrayJson = json_decode($content, true);
    		$arrayHeader = array();
