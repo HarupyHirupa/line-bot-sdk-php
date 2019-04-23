@@ -1,32 +1,31 @@
 <?php
 
-   $bot_name = "430 Signal"; 	
-   $curlSession = curl_init();
-   curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order_430.php?task=get_new_order');
-   curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-   curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
-
-   $retData = curl_exec($curlSession);
-   curl_close($curlSession);	
-   $pos = stripos($retData, '#', 0);
-   $replyData = substr($retData, 0, $pos);
-   //$groupID = substr($retData, $pos+1, strlen($retData)-$pos+1);
+   $bot_name = "430 Signal";	
    
 	
-   if(stripos($replyData,"Open Order",0) < 0) {$replyData = "No new order.!!";}		
+   		
    //$replyData = "Reply Test\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452";
-   $accessToken = "W9XPAiTihrq4YYec21gDIEpts/88RGZc18uiz81uCykGu4kwSazkEgBvs8e0RuA/nUi0K2mcINn5ubtzOCnLFBc2NlE9DRLn+JE+az+MHtr8rW11X2vbn7PbEntBCv3GFuaAk3/Ordvix/E9pwJT2wdB04t89/1O/w1cDnyilFU="; 
+   $accessToken = "W9XPAiTihrq4YYec21gDIEpts/88RGZc18uiz81uCykGu4kwSazkEgBvs8e0RuA/nUi0K2mcINn5ubtzOCnLFBc2NlE9DRLn+JE+az+MHtr8rW11X2vbn7PbEntBCv3GFuaAk3/Ordvix/E9pwJT2wdB04t89/1O/w1cDnyilFU=";
    $content = file_get_contents('php://input');
    $arrayJson = json_decode($content, true);
    $arrayHeader = array();
    $arrayHeader[] = "Content-Type: application/json";
    $arrayHeader[] = "Authorization: Bearer {$accessToken}";
-
+   
    $message = $arrayJson['events'][0]['message']['text'];
-
+   
    $id = $arrayJson['events'][0]['source']['groupId'];
-  //echo $id; 
-  
+
+   $curlSession = curl_init();
+   curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order.php?task=get_new_order&g_id='.$id);
+   curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+   curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+
+   $replyData = curl_exec($curlSession);
+   curl_close($curlSession);	
+   //echo $replyData;
+   if(strpos($replyData, "Open Order") == false) {$replyData = "No new order.!!";}
+	
    if($message == "request"){
 	$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
@@ -36,7 +35,7 @@
         $arrayPostData['messages'][1]['stickerId'] = "34";
         pushMsg($arrayHeader,$arrayPostData);
       for ($i=0; $i <= 30; $i++) {
-         $replyData = callUrlData();
+         $replyData = callUrlData($id);
          if(strpos($replyData, "Open Order") == false) {
              break;
          }
@@ -81,9 +80,6 @@
 	pushMsg($arrayHeader,$arrayPostData);
 
    }
-
-
-	
    function pushMsg($arrayHeader,$arrayPostData){
       $strUrl = "https://api.line.me/v2/bot/message/push";
       $ch = curl_init();
@@ -98,19 +94,17 @@
       curl_close ($ch);
    }
 	
-   function callUrlData(){
-     curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order_430.php?task=get_new_order');
+   function callUrlData($gID){
+     $curlSession = curl_init();
+     curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order.php?task=get_new_order&g_id='.$gID);
      curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
      curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 
      $retData = curl_exec($curlSession);
-     curl_close($curlSession);	
-     $pos = stripos($retData, '#', 0);
-     $rData = substr($retData, 0, $pos);
-     //$groupID = substr($retData, $pos+1, strlen($retData)-$pos+1);
-     return $rData;
+     curl_close($curlSession);
+     return $retData;
    }
-		
+	
    exit;
 ?>
 
