@@ -1,33 +1,47 @@
 <?php
 
-     
-   $curlSession = curl_init();
-   curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order.php?task=get_new_order');
-   curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-   curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+   $bot_name = "PeepaiFx";
+   $task = $_REQUEST['task'];
+   //echo "Task = $task \r\n";
 
-   $replyData = curl_exec($curlSession);
-   curl_close($curlSession);	
-   
-   //echo 'raw=>'.$replyData;		
-   if(strpos($replyData, "Open Order") == false) {$replyData = "No new order.!!";}		
-   //$replyData = "Reply Test\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452";
-   $accessToken = "oPkXa0tKzfxfMCjx6gm5iirMYaHeXia/Fsy1R9Lt8lRybMocm/seOqBvbIaHYkqtprR4DgHJcmsI6XNoatxGLYidiWJQEO0acDULgyJSHB2EOHNRAFXHxOuC0tP7KwiibUSgyuz6kB+MKKZf17qjYgdB04t89/1O/w1cDnyilFU=";//copy ข้อความ Channel access token ตอนที่ตั้งค่า
-   $groupID = "C042ba72bd2b8ccdfccf9426a107cdfca";
-   echo $replyData;
+   $g_id = $_REQUEST['g_id'];
+   //echo "Group_id = $g_id \r\n";
+
+
+   //$rec_id = 0;
+
+   if ($task === "push_note")
+   {
+ 
+   	$curlSession = curl_init();
+   	curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order.php?task=get_new_order&g_id='.$g_id);
+   	curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+   	curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+
+   	$replyData = curl_exec($curlSession);
+   	curl_close($curlSession);	
+   	
+   	//echo 'raw=>'.$replyData;		
+   	if(strpos($replyData, "Open Order") == false) {$replyData = "No new order.!!";}		
+   	//$replyData = "Reply Test\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452";
+   	$accessToken = "oPkXa0tKzfxfMCjx6gm5iirMYaHeXia/Fsy1R9Lt8lRybMocm/seOqBvbIaHYkqtprR4DgHJcmsI6XNoatxGLYidiWJQEO0acDULgyJSHB2EOHNRAFXHxOuC0tP7KwiibUSgyuz6kB+MKKZf17qjYgdB04t89/1O/w1cDnyilFU=";//copy ข้อความ Channel access token ตอนที่ตั้งค่า
+   	//$groupID = "C042ba72bd2b8ccdfccf9426a107cdfca";
+	$groupID = $g_id;
+   	echo $replyData;
 	
-   //$content = file_get_contents('php://input');
-   //$arrayJson = json_decode($content, true);
-   $arrayHeader = array();
-   $arrayHeader[] = "Content-Type: application/json";
-   $arrayHeader[] = "Authorization: Bearer {$accessToken}";
-   $arrayPostData['to'] = $groupID;
-   $arrayPostData['messages'][0]['type'] = "text";
-   $arrayPostData['messages'][0]['text'] = $replyData ;
-   $arrayPostData['messages'][1]['type'] = "sticker";
-   $arrayPostData['messages'][1]['packageId'] = "2";
-   $arrayPostData['messages'][1]['stickerId'] = "34";
-   pushMsg($arrayHeader,$arrayPostData);
+   
+   	$arrayHeader = array();
+   	$arrayHeader[] = "Content-Type: application/json";
+   	$arrayHeader[] = "Authorization: Bearer {$accessToken}";
+   	$arrayPostData['to'] = $groupID;
+   	$arrayPostData['messages'][0]['type'] = "text";
+   	$arrayPostData['messages'][0]['text'] = $replyData ;
+   	$arrayPostData['messages'][1]['type'] = "sticker";
+   	$arrayPostData['messages'][1]['packageId'] = "2";
+   	$arrayPostData['messages'][1]['stickerId'] = "34";
+   	pushMsg($arrayHeader,$arrayPostData);
+   }
+
 
    function pushMsg($arrayHeader,$arrayPostData){
       $strUrl = "https://api.line.me/v2/bot/message/push";
