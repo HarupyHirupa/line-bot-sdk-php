@@ -62,7 +62,7 @@
 	$use_url = preg_replace('/ /', '%20', $gr_url);
 	
 	$curlSession = curl_init();
-     	curl_setopt($curlSession, CURLOPT_URL, $gr_url);
+     	curl_setopt($curlSession, CURLOPT_URL, $use_url);
      	curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
      	curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 
