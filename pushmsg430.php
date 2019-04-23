@@ -79,12 +79,13 @@
      return $retData;
    }
 
-/*
+
    function saveGroupID($gid){
      if($gid !== "")
 	{
-     		$curlSession = curl_init();
-     		curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/save_new_group.php?task=save_new_group&g_id='.$gid.');
+     		$gr_url = 'http://tangmee.com/feedmepro/save_new_group.php?task=save_new_group&g_id='.$gid.');
+		$curlSession = curl_init();
+     		curl_setopt($curlSession, CURLOPT_URL, $gr_url;
      		curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
      		curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 
@@ -92,7 +93,7 @@
      		curl_close($curlSession);
  	}
    }
-*/		
+		
    exit;
 ?>
 
