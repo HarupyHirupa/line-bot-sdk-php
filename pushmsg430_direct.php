@@ -1,15 +1,5 @@
 <?php
 
-   /*  
-   $curlSession = curl_init();
-   curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order.php?task=get_new_order');
-   curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-   curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
-
-   $replyData = curl_exec($curlSession);
-   curl_close($curlSession);	
-   */
-
    $task = $_REQUEST['task'];
    //echo "Task = $task \r\n";
 	
@@ -43,24 +33,34 @@
 		
    	//if(strpos($replyData, "Open Order") == false) {$replyData = "No new order.!!";}		
    	//$replyData = "Reply Test\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452";
-   	$accessToken = "W9XPAiTihrq4YYec21gDIEpts/88RGZc18uiz81uCykGu4kwSazkEgBvs8e0RuA/nUi0K2mcINn5ubtzOCnLFBc2NlE9DRLn+JE+az+MHtr8rW11X2vbn7PbEntBCv3GFuaAk3/Ordvix/E9pwJT2wdB04t89/1O/w1cDnyilFU=";//copy ข้อความ Channel access token ตอนที่ตั้งค่า
-   	$groupID = "C042ba72bd2b8ccdfccf9426a107cdfca";
+   	$accessToken = "W9XPAiTihrq4YYec21gDIEpts/88RGZc18uiz81uCykGu4kwSazkEgBvs8e0RuA/nUi0K2mcINn5ubtzOCnLFBc2NlE9DRLn+JE+az+MHtr8rW11X2vbn7PbEntBCv3GFuaAk3/Ordvix/E9pwJT2wdB04t89/1O/w1cDnyilFU=";
+   	//$groupID = "C042ba72bd2b8ccdfccf9426a107cdfca";
    	echo $replyData;
  	
-	
-   	//$content = file_get_contents('php://input');
-   	//$arrayJson = json_decode($content, true);
-   	$arrayHeader = array();
-   	$arrayHeader[] = "Content-Type: application/json";
-   	$arrayHeader[] = "Authorization: Bearer {$accessToken}";
-   	$arrayPostData['to'] = $groupID;
-   	$arrayPostData['messages'][0]['type'] = "text";
-   	$arrayPostData['messages'][0]['text'] = $replyData ;
-   	$arrayPostData['messages'][1]['type'] = "sticker";
-   	$arrayPostData['messages'][1]['packageId'] = "2";
-   	$arrayPostData['messages'][1]['stickerId'] = "34";
-   	pushMsg($arrayHeader,$arrayPostData);
-   	
+	$bot_name = "430 Signal";
+   	for($i=1;$i<=3;$i++)
+	{
+   		$curlSession = curl_init();
+   		curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_group_id.php?task=get_g_id&bot_name='.$bot_name.'&rec_id='.$i);
+   		curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+   		curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+
+   		$groupID = curl_exec($curlSession);
+   		curl_close($curlSession);
+		
+   		//$content = file_get_contents('php://input');
+   		//$arrayJson = json_decode($content, true);
+   		$arrayHeader = array();
+   		$arrayHeader[] = "Content-Type: application/json";
+   		$arrayHeader[] = "Authorization: Bearer {$accessToken}";
+   		$arrayPostData['to'] = $groupID;
+   		$arrayPostData['messages'][0]['type'] = "text";
+   		$arrayPostData['messages'][0]['text'] = $replyData ;
+   		$arrayPostData['messages'][1]['type'] = "sticker";
+   		$arrayPostData['messages'][1]['packageId'] = "2";
+   		$arrayPostData['messages'][1]['stickerId'] = "34";
+   		pushMsg($arrayHeader,$arrayPostData);
+   	}
    }
 
    function pushMsg($arrayHeader,$arrayPostData){
