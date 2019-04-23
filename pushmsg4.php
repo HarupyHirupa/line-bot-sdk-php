@@ -1,6 +1,7 @@
 <?php
 
-   $bot_name = "PeepaiFx";
+   $bot_name = "430_Signal";
+
    $task = $_REQUEST['task'];
    //echo "Task = $task \r\n";
 
