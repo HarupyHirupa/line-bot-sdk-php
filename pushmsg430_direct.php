@@ -47,7 +47,7 @@
 
    		$groupID = curl_exec($curlSession);
    		curl_close($curlSession);
-		echo 'Group=>'.$groupID;
+		//echo 'Group=>'.$groupID;
 
    		//$content = file_get_contents('php://input');
    		//$arrayJson = json_decode($content, true);
@@ -56,7 +56,8 @@
    		$arrayHeader[] = "Authorization: Bearer {$accessToken}";
    		$arrayPostData['to'] = $groupID;
    		$arrayPostData['messages'][0]['type'] = "text";
-   		$arrayPostData['messages'][0]['text'] = $replyData ;
+   		//$arrayPostData['messages'][0]['text'] = $replyData;
+		$arrayPostData['messages'][0]['text'] = $groupID;
    		$arrayPostData['messages'][1]['type'] = "sticker";
    		$arrayPostData['messages'][1]['packageId'] = "2";
    		$arrayPostData['messages'][1]['stickerId'] = "34";
