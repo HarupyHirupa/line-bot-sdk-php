@@ -1,6 +1,6 @@
 <?php
 
-   $bot_name = "PeepaiFx";	
+   $bot_name = "430_signal";	
    
 	
    		
@@ -70,7 +70,7 @@
      	$retData = curl_exec($curlSession);
      	curl_close($curlSession);
 	if(strpos($retData, "#update OK#") == true) {$replyData = "#update OK#.!!";}
-	else {$replyData = "#update Failure#.!!";}
+	else {$replyData = $retData;}
 	
 
 	$arrayPostData['to'] = $id;
