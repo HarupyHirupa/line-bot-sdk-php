@@ -10,8 +10,8 @@
    curl_close($curlSession);	
    $pos = stripos($retData, '#', 0);
    $replyData = substr($retData, 0, $pos);
-   $groupID = substr($retData, $pos+1, strlen($retData)-$pos+1);
-
+   //$groupID = substr($retData, $pos+1, strlen($retData)-$pos+1);
+   
 	
    if(stripos($replyData,"Open Order",0) < 0) {$replyData = "No new order.!!";}		
    //$replyData = "Reply Test\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452";
@@ -107,7 +107,7 @@
      curl_close($curlSession);	
      $pos = stripos($retData, '#', 0);
      $rData = substr($retData, 0, $pos);
-     $groupID = substr($retData, $pos+1, strlen($retData)-$pos+1);
+     //$groupID = substr($retData, $pos+1, strlen($retData)-$pos+1);
      return $rData;
    }
 		
