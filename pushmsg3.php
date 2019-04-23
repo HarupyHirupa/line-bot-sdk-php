@@ -70,7 +70,8 @@
      	$retData = curl_exec($curlSession);
      	curl_close($curlSession);
 	if(strpos($retData, "#update OK#") == true) {$replyData = "#update OK#.!!";}
-	else {$replyData = $retData;}
+	else if(strpos($retData, "already existing.") {$replyData = "#update OK#";}
+	else {$replyData = "#update Fail#";}
 	
 
 	$arrayPostData['to'] = $id;
