@@ -60,8 +60,10 @@
    	$arrayPostData['messages'][1]['packageId'] = "2";
    	$arrayPostData['messages'][1]['stickerId'] = "34";
    	pushMsg($arrayHeader,$arrayPostData);
+   	
+   }
 
-   	function pushMsg($arrayHeader,$arrayPostData){
+   function pushMsg($arrayHeader,$arrayPostData){
       	$strUrl = "https://api.line.me/v2/bot/message/push";
       	$ch = curl_init();
       	curl_setopt($ch, CURLOPT_URL,$strUrl);
@@ -74,7 +76,6 @@
       	$result = curl_exec($ch);
       	curl_close ($ch);
    	}
-   }
 
 /*	
    function callUrlData(){
