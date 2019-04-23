@@ -59,6 +59,7 @@
 	pushMsg($arrayHeader,$arrayPostData);
 
 	$gr_url = 'http://tangmee.com/feedmepro/save_new_group.php?task=save_new_group&g_id='.$id.'&bot_name='.$bot_name;
+	$use_url = urlencode($gr_url);
 	/*
 	$curlSession = curl_init();
      	curl_setopt($curlSession, CURLOPT_URL, $gr_url);
@@ -74,7 +75,7 @@
 	$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
         //$arrayPostData['messages'][0]['text'] = $replyData;
-	$arrayPostData['messages'][0]['text'] = $gr_url;
+	$arrayPostData['messages'][0]['text'] = $use_url;
 	pushMsg($arrayHeader,$arrayPostData);
 
    }
