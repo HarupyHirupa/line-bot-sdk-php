@@ -1,6 +1,5 @@
 <?php
 
-   //$g_url = 'http://tangmee.com/feedmepro/get_new_order_430.php?task=get_new_order&g_id='.$groupID;
    $curlSession = curl_init();
    curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order_430.php?task=get_new_order');
    curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
@@ -13,10 +12,10 @@
    $groupID = substr($retData, $pos+1, strlen($retData)-$pos+1);	 
 
    //echo 'raw=>'.$replyData;		
-   //if(strpos($replyData, "Open Order") == false) {$replyData = "No new order.!!";}		
+   if(strpos($replyData, "Open Order") == false) {$replyData = "No new order.!!";}		
    //$replyData = "Reply Test\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452";
    $accessToken = "W9XPAiTihrq4YYec21gDIEpts/88RGZc18uiz81uCykGu4kwSazkEgBvs8e0RuA/nUi0K2mcINn5ubtzOCnLFBc2NlE9DRLn+JE+az+MHtr8rW11X2vbn7PbEntBCv3GFuaAk3/Ordvix/E9pwJT2wdB04t89/1O/w1cDnyilFU=";
-   //$groupID = "C042ba72bd2b8ccdfccf9426a107cdfca";
+   //$groupID = "C41a4796d0c1af51d998d88d32eae52ba";
    echo $replyData.'|Group ID =>'.$groupID;
 	
    //$content = file_get_contents('php://input');
