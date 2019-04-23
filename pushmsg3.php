@@ -46,6 +46,36 @@
          pushMsg($arrayHeader,$arrayPostData);
       }
    }
+   else if($message == "saveid"){
+	//saveGroupID($id);
+	$replyData = "Save ID in Process";
+	
+	$arrayPostData['to'] = $id;
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $replyData;
+	pushMsg($arrayHeader,$arrayPostData);
+
+	$gr_url = 'http://tangmee.com/feedmepro/save_new_group.php?task=save_new_group&g_id='.$id.'&bot_name='.$bot_name;
+	$use_url = preg_replace('/ /', '%20', $gr_url);
+	
+	$curlSession = curl_init();
+     	curl_setopt($curlSession, CURLOPT_URL, $use_url);
+     	curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+     	curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+
+     	$retData = curl_exec($curlSession);
+     	curl_close($curlSession);
+	if(strpos($retData, "#update OK#") == true) {$replyData = "#update OK#.!!";}
+	else {$replyData = "#update Failure#.!!";}
+	
+
+	$arrayPostData['to'] = $id;
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $replyData;
+	//$arrayPostData['messages'][0]['text'] = $use_url;
+	pushMsg($arrayHeader,$arrayPostData);
+
+   }
    function pushMsg($arrayHeader,$arrayPostData){
       $strUrl = "https://api.line.me/v2/bot/message/push";
       $ch = curl_init();
