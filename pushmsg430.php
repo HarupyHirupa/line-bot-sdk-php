@@ -13,7 +13,7 @@
    $groupID = substr($retData, $pos+1, strlen($retData)-$pos+1);
 
 	
-   if(strpos($replyData, "Open Order") == false) {$replyData = "No new order.!!";}		
+   if(stripos($replyData,"Open Order",0) < 0) {$replyData = "No new order.!!";}		
    //$replyData = "Reply Test\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452";
    $accessToken = "W9XPAiTihrq4YYec21gDIEpts/88RGZc18uiz81uCykGu4kwSazkEgBvs8e0RuA/nUi0K2mcINn5ubtzOCnLFBc2NlE9DRLn+JE+az+MHtr8rW11X2vbn7PbEntBCv3GFuaAk3/Ordvix/E9pwJT2wdB04t89/1O/w1cDnyilFU="; 
    $content = file_get_contents('php://input');
@@ -99,32 +99,18 @@
    }
 	
    function callUrlData(){
-     $curlSession = curl_init();
-     curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order.php?task=get_new_order');
+     curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order_430.php?task=get_new_order');
      curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
      curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 
      $retData = curl_exec($curlSession);
-     curl_close($curlSession);
-     
-     return $retData;
+     curl_close($curlSession);	
+     $pos = stripos($retData, '#', 0);
+     $rData = substr($retData, 0, $pos);
+     $groupID = substr($retData, $pos+1, strlen($retData)-$pos+1);
+     return $rData;
    }
-
-/*
-   function saveGroupID($gid){
-     if($gid !== "")
-	{
-     		$gr_url = 'http://tangmee.com/feedmepro/save_new_group.php?task=save_new_group&g_id='.$gid.');
-		$curlSession = curl_init();
-     		curl_setopt($curlSession, CURLOPT_URL, $gr_url;
-     		curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-     		curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
-
-     		$retData = curl_exec($curlSession);
-     		curl_close($curlSession);
- 	}
-   }
-*/		
+		
    exit;
 ?>
 
