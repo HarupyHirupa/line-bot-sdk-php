@@ -28,7 +28,7 @@
    $op_type = $_REQUEST['op_type'];
    //echo "op_type = $op_type \r\n";	
    $replyData = "";
-   if(task == direct_push)
+   if($task == "direct_push")
    {
 	if($op_type == 1)
 	{
