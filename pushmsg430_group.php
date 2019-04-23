@@ -12,9 +12,9 @@ for($i=1;$i<=3;$i++)
    $groupID = curl_exec($curlSession);
    curl_close($curlSession);
    
-  
+   $g_url = "http://tangmee.com/feedmepro/get_new_order_430.php?task=get_new_order&g_id=".$groupID;
    $curlSession = curl_init();
-   curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order_430.php?task=get_new_order&g_id='.$groupID);
+   curl_setopt($curlSession, CURLOPT_URL, $g_url);
    curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
    curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 
