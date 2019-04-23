@@ -65,10 +65,12 @@
 
      	$retData = curl_exec($curlSession);
      	curl_close($curlSession);
+	if(strpos($retData, "#update OK#") == true) {$replyData = "#update OK#.!!";}
+	else {$replyData = "#update Failure#.!!";}
 
 	$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = $retData;
+        $arrayPostData['messages'][0]['text'] = $replyData;
 	pushMsg($arrayHeader,$arrayPostData);
 
    }
@@ -97,6 +99,7 @@
 
      $retData = curl_exec($curlSession);
      curl_close($curlSession);
+     
      return $retData;
    }
 
