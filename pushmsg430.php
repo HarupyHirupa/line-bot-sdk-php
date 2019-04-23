@@ -1,5 +1,6 @@
 <?php
 
+   $bot_name = "430 Signal"; 	
    $curlSession = curl_init();
    curl_setopt($curlSession, CURLOPT_URL, 'http://tangmee.com/feedmepro/get_new_order.php?task=get_new_order');
    curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
@@ -57,7 +58,7 @@
         $arrayPostData['messages'][0]['text'] = $replyData;
 	pushMsg($arrayHeader,$arrayPostData);
 
-	$gr_url = 'http://tangmee.com/feedmepro/save_new_group.php?task=save_new_group&g_id='.$id;
+	$gr_url = 'http://tangmee.com/feedmepro/save_new_group.php?task=save_new_group&g_id='.$id.'&bot_name='.$bot_name;
 	$curlSession = curl_init();
      	curl_setopt($curlSession, CURLOPT_URL, $gr_url);
      	curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
