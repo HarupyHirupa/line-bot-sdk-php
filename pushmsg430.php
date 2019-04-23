@@ -51,7 +51,7 @@
    else if($message == "saveid"){
 	//saveGroupID($id);
 	$replyData = "Save ID in Process";
-	$gr_url = 'http://tangmee.com/feedmepro/save_new_group.php?task=save_new_group&g_id='.$id.');
+	$gr_url = 'http://tangmee.com/feedmepro/save_new_group.php?task=save_new_group&g_id='.$id;
 	$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = $gr_url;
