@@ -41,7 +41,7 @@
    				
    	//echo 'raw=>'.$replyData;
 		
-   	if(strpos($replyData, "Open Order") == false) {$replyData = "No new order.!!";}		
+   	//if(strpos($replyData, "Open Order") == false) {$replyData = "No new order.!!";}		
    	//$replyData = "Reply Test\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452";
    	$accessToken = "W9XPAiTihrq4YYec21gDIEpts/88RGZc18uiz81uCykGu4kwSazkEgBvs8e0RuA/nUi0K2mcINn5ubtzOCnLFBc2NlE9DRLn+JE+az+MHtr8rW11X2vbn7PbEntBCv3GFuaAk3/Ordvix/E9pwJT2wdB04t89/1O/w1cDnyilFU=";//copy ข้อความ Channel access token ตอนที่ตั้งค่า
    	$groupID = "C042ba72bd2b8ccdfccf9426a107cdfca";
