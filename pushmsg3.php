@@ -10,8 +10,7 @@
    curl_close($curlSession);	
    //echo $replyData;
 	
-   //if(strpos($replyData, "Open Order") == false) {$replyData = "No new order.!!";}		
-   if(stripos($replyData,"Open Order",0) < 0) {$replyData = "No new order.!!";}
+   if(strpos($replyData, "Open Order") == false) {$replyData = "No new order.!!";}		
    //$replyData = "Reply Test\nSELL:GBPUSD => 1.29852\nTP => 128652\nSL => 1.29452";
    $accessToken = "oPkXa0tKzfxfMCjx6gm5iirMYaHeXia/Fsy1R9Lt8lRybMocm/seOqBvbIaHYkqtprR4DgHJcmsI6XNoatxGLYidiWJQEO0acDULgyJSHB2EOHNRAFXHxOuC0tP7KwiibUSgyuz6kB+MKKZf17qjYgdB04t89/1O/w1cDnyilFU=";
    $content = file_get_contents('php://input');
