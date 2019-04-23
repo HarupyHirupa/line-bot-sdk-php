@@ -51,16 +51,25 @@
    else if($message == "saveid"){
 	//saveGroupID($id);
 	$replyData = "Save ID in Process";
-	$gr_url = 'http://tangmee.com/feedmepro/save_new_group.php?task=save_new_group&g_id='.$id;
+	
 	$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = $gr_url;
-        //$arrayPostData['messages'][1]['type'] = "sticker";
-        //$arrayPostData['messages'][1]['packageId'] = "2";
-        //$arrayPostData['messages'][1]['stickerId'] = "34";
-        
+        $arrayPostData['messages'][0]['text'] = $replyData;
 	pushMsg($arrayHeader,$arrayPostData);
-	exit;
+
+	$gr_url = 'http://tangmee.com/feedmepro/save_new_group.php?task=save_new_group&g_id='.$id;
+	$curlSession = curl_init();
+     	curl_setopt($curlSession, CURLOPT_URL, $gr_url;
+     	curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+     	curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+
+     	$retData = curl_exec($curlSession);
+     	curl_close($curlSession);
+
+	$arrayPostData['to'] = $id;
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $retData;
+	pushMsg($arrayHeader,$arrayPostData);
 
    }
 
