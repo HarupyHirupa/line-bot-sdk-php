@@ -59,6 +59,7 @@
 	pushMsg($arrayHeader,$arrayPostData);
 
 	$gr_url = 'http://tangmee.com/feedmepro/save_new_group.php?task=save_new_group&g_id='.$id.'&bot_name='.$bot_name;
+	/*
 	$curlSession = curl_init();
      	curl_setopt($curlSession, CURLOPT_URL, $gr_url);
      	curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
@@ -68,10 +69,12 @@
      	curl_close($curlSession);
 	if(strpos($retData, "#update OK#") == true) {$replyData = "#update OK#.!!";}
 	else {$replyData = "#update Failure#.!!";}
+	*/
 
 	$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = $replyData;
+        //$arrayPostData['messages'][0]['text'] = $replyData;
+	$arrayPostData['messages'][0]['text'] = $gr_url;
 	pushMsg($arrayHeader,$arrayPostData);
 
    }
